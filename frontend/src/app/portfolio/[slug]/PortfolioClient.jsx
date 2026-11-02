@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useParams } from "next/navigation";
@@ -21,21 +22,16 @@ export default function PortfolioPage() {
 
         const fetchPortfolio = async () => {
             try {
-              console.log("try 1")
-
                 setLoading(true);
                 setError("");
 
                 const apiResponse = await getPortfolioProfile(slug);
-              console.log("try 2")
 
                 console.log("Complete API Response:", apiResponse);
 
                 if (!apiResponse) {
                     throw new Error("API request failed");
                 }
-              console.log("try 3")
-
 
                 // Your backend returns:
                 // {
@@ -44,10 +40,8 @@ export default function PortfolioPage() {
                 // }
 
                 const result = apiResponse?.data?.response;
-              console.log("try 4")
 
                 console.log("Portfolio Data:", result);
-              console.log("try 5")
 
                 if (!apiResponse?.data?.success || !result) {
                     throw new Error(
@@ -55,20 +49,16 @@ export default function PortfolioPage() {
                         "Portfolio not found"
                     );
                 }
-              console.log("try 6")
 
                 if (!result.personalInfo) {
                     throw new Error("Personal information not found");
                 }
-              console.log("try 7")
 
                 if (isMounted) {
                     setPortfolio(result);
                 }
-              console.log("try 8")
 
             } catch (err) {
-              console.log("Catch 1")
                 console.error("Portfolio Fetch Error:", err);
 
                 if (isMounted) {
