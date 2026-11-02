@@ -1,12 +1,14 @@
-import Link from 'next/link'
-import React from 'react'
+"use client"
+import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const Home = () => {
-  return (
-    <div>
-      Click Here to redirect create portfolio page : <Link href="/create-portfolio">Create Your Own PortFolio</Link>
-    </div>
-  )
+  const router = useRouter();
+  useEffect(() => {
+    router.push(`portfolio/create-portfolio`)
+  })
+  return;
 }
 
 export default Home
