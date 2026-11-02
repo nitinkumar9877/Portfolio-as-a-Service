@@ -46,14 +46,18 @@ export async function createPortfolio(portfolioData) {
 
 export async function getPortfolioProfile(slugName) {
     try {
-        // http://localhost:8080/get-portfolio/nitin-kumar-devo
-        const URL = `${API_URL}get-portfolio/${slugName}`
-        console.log("This is the url for the fetching data from the user :: ", URL);
+        const URL = `${API_URL}/get-portfolio/${slugName}`;
+
         const apiResponse = await axios.get(URL);
+
+        console.log("STATUS:", apiResponse.status);
+        console.log("RESPONSE DATA:", apiResponse.data);
+        console.log("RESPONSE HEADERS:", apiResponse.headers);
+
         return apiResponse;
+
     } catch (err) {
-        console.log("Fail to fetch profile of user");
-        console.log(err);
+        console.log("API ERROR:", err);
         return false;
     }
 }
